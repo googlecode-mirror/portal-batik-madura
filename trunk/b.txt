@@ -1,1 +1,4 @@
-ini aku lo
+<<<<<<< .mine
+jadi, aku kebagian logout, sama daftar
+=======
+ini aku lo>>>>>>> .r4
