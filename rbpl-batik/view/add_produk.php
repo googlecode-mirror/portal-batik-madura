@@ -1,3 +1,6 @@
+<?php
+include "../code/login_proxy.php";
+?>
 <html>
 <head>
 <title>Menambah Produk</title>
@@ -53,7 +56,7 @@
 			        </ul>
 					<div>
 					
-		<form method="post" action="logout.php"><legend>LOG OUT</legend>
+		<form method="post" action="../code/logout_presnt.php"><legend>LOG OUT</legend>
 
 			<button class="btn btn-danger" type="submit">Log Out</button>
 		</form>
@@ -67,7 +70,7 @@
 					</pre>
 					<font face='Script MT Bold'>
 					
-					<form name="My Form" method="post" action="produk.php">
+					<form name="My Form" method="post" action="../code/produk_presnt.php" enctype="multipart/form-data">
 					<font face='Gill Sans MT' color='#708090'>
 					Nama Produk : <BR>
 					<input type ="text" placeholder="Masukkan nama produk" name="nama" maxlength="10" size="8"><BR>
@@ -78,19 +81,16 @@
 					Detail Produk : <BR>
 					<textarea name="detail" placeholder="Masukkan detail produk" cols=12  rows=5></textarea>
 					<BR>
-					Gambar :
-<form action="upload.php" method="post" enctype="multipart/form-data">
+					Gambar :		
 	<div>Upload your photo: <em>max file size 8000000 bytes</em></div>
 	<input type="file" name="photo_file" />
-	<input type="submit" name="submit" value="Upload" />
 	<input type="hidden" name="max_file_size" value="8000000" />
-	<input type="hidden" name="user_id" value="1" />
-</form>
+
 <BR>
 <BR>
 <BR>
 
-					<button class="btn btn-primary" type="submit">Submit</button>
+					<button class="btn btn-primary" type="submit" name="submit">Submit</button>
 					<button class="btn" type="reset">Reset</button>
 					<BR><BR>
 					<font face='Times New Roman' color='#BDB76B'>
