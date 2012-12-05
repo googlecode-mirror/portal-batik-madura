@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 23, 2012 at 12:42 AM
--- Server version: 5.5.25a
--- PHP Version: 5.4.4
+-- Generation Time: Dec 03, 2012 at 04:20 PM
+-- Server version: 5.1.37
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -34,11 +33,16 @@ CREATE TABLE IF NOT EXISTS `investasi` (
   `keterangan_inv` text,
   `waktu_inv` date DEFAULT NULL,
   `profil_inv` text,
-  `gambr_inv` longblob,
+  `file attachment` varchar(20) DEFAULT NULL,
   `status_inv` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_inv`),
   KEY `FK_Meminta2` (`id_dagang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `investasi`
+--
+
 
 -- --------------------------------------------------------
 
@@ -53,6 +57,11 @@ CREATE TABLE IF NOT EXISTS `investor` (
   KEY `FK_investor2` (`id_inv`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `investor`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +75,11 @@ CREATE TABLE IF NOT EXISTS `membeli` (
   KEY `FK_membeli2` (`id_penj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `membeli`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -78,9 +92,15 @@ CREATE TABLE IF NOT EXISTS `notif_peng` (
   `isi_notif_2` varchar(50) DEFAULT NULL,
   `tgl_2` date DEFAULT NULL,
   `status_2` int(11) DEFAULT NULL,
+  `file` varchar(20) NOT NULL,
   PRIMARY KEY (`id_notif_2`),
   KEY `FK_memiliki1` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notif_peng`
+--
+
 
 -- --------------------------------------------------------
 
@@ -97,6 +117,11 @@ CREATE TABLE IF NOT EXISTS `notif_ud` (
   PRIMARY KEY (`id_notif_1`),
   KEY `FK_memili2` (`id_dagang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notif_ud`
+--
+
 
 -- --------------------------------------------------------
 
@@ -117,6 +142,11 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pengguna`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -124,16 +154,26 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
 --
 
 CREATE TABLE IF NOT EXISTS `pengrajin` (
-  `id_dagang` int(11) NOT NULL,
+  `id_dagang` int(11) NOT NULL AUTO_INCREMENT,
   `id_inv` int(11) DEFAULT NULL,
   `nama_usaha` varchar(20) DEFAULT NULL,
   `alamat_usaha` text,
   `telp_usaha` int(11) DEFAULT NULL,
   `profil_usaha` text,
-  `gmbar_usaha` longblob,
+  `gmbar_usaha` varchar(50) DEFAULT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
   PRIMARY KEY (`id_dagang`),
   KEY `FK_Meminta` (`id_inv`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `pengrajin`
+--
+
+INSERT INTO `pengrajin` (`id_dagang`, `id_inv`, `nama_usaha`, `alamat_usaha`, `telp_usaha`, `profil_usaha`, `gmbar_usaha`, `username`, `password`) VALUES
+(1, 1, 'UD. Sejahtera merdek', 'Jl. sejahtera indah', 2147483647, 'batik terindah', '../img/user/ela/sarjana.jpg', 'ela', 'ela'),
+(2, NULL, 'UD. MAJU JAYA ss', 'jl. klampar jaya raya', 978675, 'jhjkgtjk', '../img/user/mama/222389_1270379757_large.jpg', 'mama', 'mama');
 
 -- --------------------------------------------------------
 
@@ -155,6 +195,39 @@ CREATE TABLE IF NOT EXISTS `penjualan` (
   KEY `FK_Menjual` (`id_dagang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `penjualan`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk`
+--
+
+CREATE TABLE IF NOT EXISTS `produk` (
+  `nama_produk` varchar(30) NOT NULL,
+  `harga_produk` int(11) NOT NULL,
+  `stok_produk` int(11) NOT NULL,
+  `detail_produk` text NOT NULL,
+  `id_dagang` varchar(11) NOT NULL,
+  `Gambar` varchar(30) NOT NULL,
+  `id_produk` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_produk`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`nama_produk`, `harga_produk`, `stok_produk`, `detail_produk`, `id_dagang`, `Gambar`, `id_produk`) VALUES
+('Batik1', 120000, 12, 'batiknya bagus', '2', '../img/produk/2/B 9 100RB.JPG', 1),
+('Batik2', 400000, 8, ' Bahan : Sutera.\r\nterbatas...', '2', '../img/produk/2/A 22 180RB.JPG', 2),
+('batik3', 400000, 8, 'bagus', '2', '../img/produk/2/A 10 350RB.JPG', 3),
+('batikq', 70000, 8, 'bagus bgt', '1', '../img/produk/1/A 26 120RB.JPG', 4),
+('batikmu', 400000, 4, 'batik bagus', '1', '../img/produk/1/A 37 110RB.JPG', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -173,6 +246,11 @@ CREATE TABLE IF NOT EXISTS `riwayat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `riwayat`
+--
+
+
+--
 -- Constraints for dumped tables
 --
 
@@ -186,15 +264,15 @@ ALTER TABLE `investasi`
 -- Constraints for table `investor`
 --
 ALTER TABLE `investor`
-  ADD CONSTRAINT `FK_investor2` FOREIGN KEY (`id_inv`) REFERENCES `investasi` (`id_inv`),
-  ADD CONSTRAINT `FK_investor` FOREIGN KEY (`id_user`) REFERENCES `pengguna` (`id_user`);
+  ADD CONSTRAINT `FK_investor` FOREIGN KEY (`id_user`) REFERENCES `pengguna` (`id_user`),
+  ADD CONSTRAINT `FK_investor2` FOREIGN KEY (`id_inv`) REFERENCES `investasi` (`id_inv`);
 
 --
 -- Constraints for table `membeli`
 --
 ALTER TABLE `membeli`
-  ADD CONSTRAINT `FK_membeli2` FOREIGN KEY (`id_penj`) REFERENCES `penjualan` (`id_penj`),
-  ADD CONSTRAINT `FK_membeli` FOREIGN KEY (`id_user`) REFERENCES `pengguna` (`id_user`);
+  ADD CONSTRAINT `FK_membeli` FOREIGN KEY (`id_user`) REFERENCES `pengguna` (`id_user`),
+  ADD CONSTRAINT `FK_membeli2` FOREIGN KEY (`id_penj`) REFERENCES `penjualan` (`id_penj`);
 
 --
 -- Constraints for table `notif_peng`
