@@ -88,8 +88,11 @@
   			<div class="control-group">
     			<label class="control-label" for="inputLogin">Jenis Kelamin</label>
    				<div class="controls">
-      				<label class="radio"><input type="radio" name="laki" id="optionsRadios1" value="L" checked>Laki-Laki</label>
-	  				<label class="radio"><input type="radio" name="perem" id="optionsRadios2" value="L">Perempuan</label>
+      				<select name="jk">
+						<option value="1">-Pilih Gender-</option>
+  						<option value="L">Laki-Laki</option>
+  						<option value="P">Perempuan</option>
+					</select>
     			</div>
   			</div>
   			<div class="control-group">

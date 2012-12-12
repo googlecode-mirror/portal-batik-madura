@@ -43,10 +43,11 @@ if ((empty($nama))||(empty($login))||(empty($telepon))||(empty($alamat))||(empty
 			$pass = $pass1;
 		}
 	}
-	if(isset($_POST['laki'])){
-		$jk = $_POST['laki'];
+	$jk = $_POST['jk'];
+	if ($jk == 1){
+		echo "<script>alert('Pilih gender anda ;) ');window.history.go(-1)</script>";
 	}else{
-		$jk = $_POST['perem'];
+		$jk = $jk;
 	}
 }
 mysql_query("INSERT INTO `pengguna`(`id_user`, `nama_user`, `id_login_peng`, `password`, `no_telp`, `jk`, `alamat`, `email`, `status_peng`) VALUES ('".$id_us."','".$nama."','".$login."','".$pass."','".$telepon."','".$jk."','".$alamat."','".$email."','pengguna')");
