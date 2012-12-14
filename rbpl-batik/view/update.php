@@ -10,8 +10,6 @@ include "../code/config.php";
     <!-- Bootstrap -->
 	<link rel="stylesheet" type="css/text" href="../css/bootstrap.css" />
 	<link rel="stylesheet" type="css/text" href="../css/style.css" />
-		<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/animate.js"></script>
 <style type="text/css">
 <!--
 .style1 {
@@ -65,63 +63,77 @@ include "../code/config.php";
 		</div>
 		
 		<div class="span8">
-		  
-		  	<div class="navbar">
-			  <div class="navbar-inner">
-				<ul class="nav">
-			  		<li class="active">
-					<a>Profil</a>
-					</li>
-				   <li><a href="produk.php">Produk</a></li>
-				  <li><a href="___.php">Notifikasi</a></li>
-				  <li><a href="___.php">Laporan</a></li>
-				</ul>
-			  </div>
-			</div>		  
-<pre class="style3 style1"><span class="style4">																									
-<body>
-<form id="form1" name="form1" method="post" action="update_logic.php">
+		 		  
+<pre class="style3 style1">MENGAPDATE PROFIL
+					</pre>
+																									
 <table border="1" cellpadding="3" cellspacing="0">
-<tr>
-<td align="center" bgcolor="#FFCC00"><strong></strong></td>
-<td align="center" bgcolor="#FFCC00"><strong>EDIT</strong></td>
-</tr>
-<?
-// Fetch record rows in $result by while loop and put them into $row.
-$sql = mysql_query("SELECT * FROM pengrajin WHERE username = '$_SESSION[username]'");
-while ($data = mysql_fetch_array($sql))
-{
- //$user_nama = $data['nama_usaha'];
-?>
-<tr>
-<td bgcolor="#FFFFCC">Nama : </td>
-<td bgcolor="#FFFFCC"><input name="name_<? echo $data['nama_usaha']; ?>" type="text" id="name_<? echo $data['nama_usaha']; ?>" value="<? echo $data['nama_usaha']; ?>" /></td>
-</tr>
 
-<tr>
-<td bgcolor="#FFFFCC">Alamat : </td>
-<td bgcolor="#FFFFCC"><input name="name_<? echo $data['alamat_usaha']; ?>" type="text" id="name_<? echo $data['alamat_usaha']; ?>" value="<? echo $data['alamat_usaha']; ?>" /></td>
-</tr>
+<?php
 
-<tr>
-<td bgcolor="#FFFFCC">Telepon : </td>
-<td bgcolor="#FFFFCC"><input name="name_<? echo $data['telp_usaha']; ?>" type="text" id="name_<? echo $data['telp_usaha']; ?>" value="<? echo $data['telp_usaha']; ?>" /></td>
-</tr>
+$query=" SELECT * FROM pengrajin";
+$result=mysql_query($query);
+$num=mysql_numrows($result);
+mysql_close();
 
-<tr>
-<td bgcolor="#FFFFCC">Profil : </td>
-<td bgcolor="#FFFFCC"><input name="name_<? echo $data['profil_usaha']; ?>" type="text" id="name_<? echo $data['profil_usaha']; ?>" value="<? echo $data['profil_usaha']; ?>" /></td>
-</tr>
 
+ $i=0;
+while ($i < $num) {
+$nama=mysql_result($result,$i,"nama_usaha");
+$alamat=mysql_result($result,$i,"alamat_usaha");
+$telp=mysql_result($result,$i,"telp_usaha");
+$profil=mysql_result($result,$i,"profil_usaha");
+ $gambar=mysql_result($result,$i,"gmbar_usaha");
+$user=mysql_result($result,$i,"username");
+$pass=mysql_result($result,$i,"password");
+++$i;
+}
+ 
+ ?>
+ <form action="../code/update_presnt.php" method="post" enctype="multipart/form-data">
+  <table>
+ <tr>
+<td>Nama Usaha :</td>
+<td><input type="text" name="nama" size="30" value="<?php echo $nama; ?>"></td>
+ </tr>
 <tr>
-<td bgcolor="#FFFFCC">Gambar : </td>
-<td bgcolor="#FFFFCC"><input name="name_<? echo $data['id_dagang']; ?>" type="text" id="name_<? echo $data['id_dagang']; ?>" value="<? echo $data['nama_usaha']; ?>" /></td>
+ <td>Alamat :</td>
+<td><input type="text" name="alamat" size="30" value="<?php echo $alamat; ?>"></td>
 </tr>
-
-<? } // End while loop. ?>
-</table>
-<input type="submit" name="Submit" value="Update" />
+<tr>
+<td>Telpon :</td>
+ <td><input type="text" name="telp" size="30" value="<?php echo $telp; ?>"></td>
+</tr>
+<tr>
+<td>Profil :</td>
+<td><textarea name="profil" cols="30"><?php echo $profil; ?></textarea></td>
+</tr>
+ <tr>
+ <td>Gambar :</td>
+ <td><img src="<?php echo $gambar; ?>" width="250" height="150" class="img-rounded" /> <br>
+ <span class="style9">Upload your photo: <br><em>max file size 8000000 bytes</em> </span>
+ <input type="file" name="photo_file" accept="image/*" />
+ <input type="hidden" name="max_file_size" value="8000000" /></td>
+ </tr>
+ 
+ <tr>
+   <td>Username :</td>
+  <td><?php echo $user; ?></td>
+   </tr>
+   <tr>
+   <td>Password :</td>
+  <td><input type="password" name="pass" size="30" value="<?php echo $pass; ?>" ></td>
+   </tr>
+   </table>
+  
+   <p>
+ <BR><BR>
+ <button class="btn btn-primary" type="submit" name="submit">Update</button>
+   <button class="btn" type="submit">Cancle</button>
 </form>
+   
+<?
+
 </body>
 </html>
 
