@@ -57,7 +57,7 @@ KOBATPAM
 <td >
 <button class="btn btn-primary" type="submit">Submit</button>
 <font face='Times New Roman' color='#BDB76B'>
-<a href="../view/daftar.php">    Lakukan Register</td>
+<a href="../view/daftar_admin.php">    Lakukan Register</td>
 </tr>
 </table></form><em>KOBATPAM (Komunitas Batik Pamekasan) merupakan bentuk sistem informasi yang diciptakan / dikembangkan untuk membantu pengrajin batik dikawasan Pamekasan – Madura.
 
