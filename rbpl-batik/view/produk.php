@@ -1,3 +1,7 @@
+<?php
+include "../code/config.php";
+include "../code/login_proxy.php";
+?>
 <html>
 <head>
 <title>Produk</title>
@@ -6,8 +10,6 @@
     <!-- Bootstrap -->
 	<link rel="stylesheet" type="css/text" href="../css/bootstrap.css" />
 	<link rel="stylesheet" type="css/text" href="../css/style.css" />
-		<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/animate.js"></script>
 <style type="text/css">
 <!--
 .style1 {
@@ -53,7 +55,7 @@
 			        </ul>
 					<div>
 					
-		<form method="post" action="logout.php"><legend>LOG OUT</legend>
+		<form method="post" action="../code/logout_presnt.php"><legend>LOG OUT</legend>
 
 			<button class="btn btn-danger" type="submit">Log Out</button>
 		</form>
@@ -65,16 +67,61 @@
 		  	<div class="navbar">
 			  <div class="navbar-inner">
 				<ul class="nav">
-			  		<li ><a href="home_pengrajin.php">Home</a>
+			  		<li ><a href="home_pengrajin_profil.php">Profil</a>
 					</li>
-				   <li><a href="___">Profil</a></li>
-				  <li class="active"><a href="produk.php">Produk</a></li>
-				  <li><a href="___.php">Notifikasi</a></li>
+				   <li class="active"><a href="produk.php">Produk</a></li>
+				  <li><a href="notifikasi.php">Notifikasi</a></li>
 				  <li><a href="____.php">Laporan</a></li>
 				</ul>
 			  </div>
 			</div>		  
-<pre class="style3 style1"><span class="style4"><strong>DAFTAR PRODUK BATIK</strong>  																		 						<a href="add_produk.php"><button class="btn btn-success" type="submit" >Add Produk</button></span>
+<pre class="style3 style1"><span class="style4"><strong>DAFTAR PRODUK BATIK</strong>  																		 				<a href="add_produk.php"><button class="btn btn-success" type="submit" >Add Produk</button></span></a>
+<center>
+	<?php
+	$sql = mysql_query("SELECT * FROM produk, pengrajin WHERE pengrajin.username = '$_SESSION[username]' AND pengrajin.id_dagang = produk.id_dagang") ;
+
+	echo "<table border='1' bordercolor = 'white' >
+	<tr>
+	<th BGCOLOR=#00CC99>ID PRODUK</th>	
+	<th BGCOLOR=#00CC99>NAMA PRODUK</th>
+	<th BGCOLOR=#00CC99>HARGA PRODUK</th>
+	<th BGCOLOR=#00CC99>STOK</th>
+	<th BGCOLOR=#00CC99>DETAIL PRODUK</th>
+	<th BGCOLOR=#00CC99>GAMBAR</th>
+	<th BGCOLOR=#00CC99>KONFIGURASI</th>
+	
+	</tr>";
+	
+	while ($data = mysql_fetch_array($sql))
+	{
+	$id = $data['id_produk'] ;
+	 $nama = $data['nama_produk'] ;
+	 $harga = $data['harga_produk'];
+	  $stok = $data['stok_produk'];
+  	  $detail = $data['detail_produk'];
+	  $loc = $data['Gambar'];
+	  
+//	if($_POST['Submit']){  
+	  
+	echo "<tr>";
+	echo "<td>" . $id . "</td>";
+	echo "<td>" . $nama . "</td>";
+	echo "<td>" . $harga . "</td>";
+	echo "<td>" . $stok . "</td>";
+	echo "<td>" . $detail . "</td>";
+	echo "<td>";
+	echo '<img src="'.$loc.'" width="100" />';
+	echo "</td>";
+	echo "<td>";
+	echo '<a href="update_produk.php?id='.$data['id_produk'].'">Update produk</a>';
+	echo '<br>'; 			
+	echo '<a href="../code/delete_produk.php?id='.$data['id_produk'].'"> Delete produk</a>' ;
+	echo "</td>";
+	echo "</tr>";
+	
+	}
+	?>
+	</center>
 		</div>
 		
 	  </div>
