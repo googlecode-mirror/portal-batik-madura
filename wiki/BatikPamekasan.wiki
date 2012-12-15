@@ -1,0 +1,18 @@
+#summary One-sentence summary of this page.
+
+<h1><a name="Wiki_Syntax"></a>Wiki Syntax<a href="#Wiki_Syntax" class="section_anchor"></a></h1><p><ul><li><a href="#Wiki_Syntax">Wiki Syntax</a></li><li><a href="#Introduction">Introduction</a></li><li><a href="#Pragmas">Pragmas</a></li><li><a href="#Wiki-style_markup">Wiki-style markup</a></li><ul><li><a 
+
+</p><h1><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h1><p>Each wiki page is stored in a .wiki file under the /wiki directory in a project&#x27;s repository.  Each file&#x27;s name is the same as the wiki page name.  And, each wiki file consists of optional pragma lines followed by the content of the page. </p><h1><a
+
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
