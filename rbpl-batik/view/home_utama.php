@@ -58,9 +58,14 @@
 		
 		<div class="span8">
 		  	<div class="navbar" align="right">
+			<p>
+				<form method="post" action="Login_pengunjung.php">
+			  		<button class="btn btn-success" type="submit">Login</button>
+			  	</form>
 				<form method="post" action="Daftar_pengunjung.php">
 			  		<button class="btn btn-success" type="submit">Daftar</button>
 			  	</form>
+			</p>
 			</div>
 			<pre class="style3 style1">
 				<table align="center">
