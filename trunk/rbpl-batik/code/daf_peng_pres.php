@@ -12,22 +12,18 @@ if ((empty($nama))||(empty($login))||(empty($telepon))||(empty($alamat))||(empty
 }else{
 
 	$id_lam = mysql_result(mysql_query("SELECT MAX(id_user) FROM pengguna"),0);
-	if((empty($id_lam))){
-		echo "<script>alert('Harap diisi semua field yang tersedia ;) ');window.history.go(-1)</script>";
+	if ($id_lam == 0){
+		$id_us = 101;
 	}else{
-		if ($id_lam == 0){
-			$id_us = 101;
-		}else{
-			$id_us = $id_lam+1;
-		}
+		$id_us = $id_lam+1;
 	}
 	$login_temp = $_POST['login'];
 	if ((empty($login_temp))){
 		echo "<script>alert('Harap diisi semua field yang tersedia ;) ');window.history.go(-1)</script>";
 	}else{
 		$lam = mysql_num_rows(mysql_query("SELECT id_login_peng FROM pengguna WHERE '".$login_temp."'"));
-		if ($lam == 1){
-			echo "<script>alert('Harap diisi semua field yang tersedia ;) ');window.history.go(-1)</script>";
+		if ($lam > 1){
+			echo "<script>alert('ID sudah dipakai harap diisi dengan ID lain');window.history.go(-1)</script>";
 		}else{
 			$login = $login_temp;
 		}

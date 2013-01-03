@@ -54,7 +54,7 @@
 		</div>
 		<div class="span8" style="background-color:#f5f5f5" style="border-style:double">
 		<p>&nbsp;</p>
-			<form class="form-horizontal" method="post" action="../code/daf_peng_pres.php">
+			<form class="form-horizontal" method="post" action="../code/login_pengu.php">
   			<div class="control-group">
     			<label class="control-label" for="inputLogin">Id-Login</label>
    				<div class="controls">

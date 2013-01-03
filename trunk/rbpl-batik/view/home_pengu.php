@@ -1,3 +1,10 @@
+<?php
+include "../code/proxy.php";
+
+$query = mysql_query("SELECT * FROM pengguna WHERE Id_login_peng='$_SESSION[login]'");
+$hasil = mysql_fetch_array($query);
+$nama = $hasil['nama_user'];
+?>
 <html>
 <head>
 <title>Daftar Pengguna</title>
@@ -52,16 +59,10 @@
 					  <li>TIPS-TRIK</li>
 			        </ul>
 		</div>
-	<div class="span8" style="background-color:f5f5f5">
-		<div align="center">
-			<h3>Selamat anda telah berhasil terdaftar dalam Kobatpam</h3>
-			<h6> klik tombol di bawah untuk melanjutakan</h6>
-		</div>
-		<div align="center">
-			<form method="post" action="home_utama.php">
-				<button type="submit" class="btn" name="Submit">Lanjutkan</button>
-			</form>
-		</div>
+		<div class="span8" style="background-color:#f5f5f5" style="border-style:double">
+			<h2> Selamat Datang <?php echo "$nama"; ?></h2>
+			
+		</div>	
 	</div>
 </div>
 
