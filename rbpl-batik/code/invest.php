@@ -1,9 +1,10 @@
 <?php
-include "logincek.php";
+//include "../code/login_proxy.php";
+include "../code/config.php";
 ?>
 <html>
 <head>
-<title>Kobatpam-Laman Investasi</title>
+<title>Home Pengrajin</title>
 <meta name="generator"
     content="HTML Tidy for Windows (vers 14 February 2006), see www.w3.org" />
     <!-- Bootstrap -->
@@ -14,98 +15,139 @@ include "logincek.php";
 <style type="text/css">
 <!--
 .style1 {
-	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
 	color: #000099;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
-.style2 {font-weight: bold}
-.style3 {color: #CC6600}
+.style2 {font-family: Georgia, "Times New Roman", Times, serif}
 -->
 </style>
 </head>
 <body>
-<div class="row">
-		<div class="style3">
-		  <div align="center">
-			<div align="left">
-			  <div align="center">
-			    <pre class="style3 style1 style2 style1">
-		SELAMAT DATANG DI
-		Komunitas Batik Pamekasan		</pre>
-		      </div>
-			</div>
-		  </div>
-		</div>
-		
+	
+	<div class="style3">
+	  <div align="center" class="style2">
+		<pre class="style3 style1 style1">
+	
+		SELAMAT DATANG
+		-- Komunitas Batik Pamekasan --</pre>
+			  <BR><BR>
+	  </div>
+	</div>
+
 	<div class="container-fluid">
-  			<div class="row-fluid">
-    			<div class="span2 offset1">
-					<p><img src="../img/1.jpg" width="250" height="150"	 		class="img-rounded"></p>
-					<address>
-					  <strong>Komunitas Batik Pamekasan</strong><br>
-					  Jl.   niansa&nbsp;<em>soke</em>pamekasan <br>
-					  Pamekasan, 60111<br>
+	  <div class="row-fluid">
+		<div class="span2">
+		  <p><img src="../img/logo_kobatpam.jpg" width="250" height="150"
+		  <BR>
+		  <address>
+		    <strong>Komunitas Batik Pamekasan</strong><br>
+					  Jl.Jokotole, Pamekasan <br>
+					  Madura, 60111<br>
 					  <abbr title="Phone">P:</abbr> (031) 5994251
-					</address>
+		  </address>
 					 
 					<address>
 					<strong>KOBATPAM</strong><br>
 					  <a href="mailto:#">kobatpam@gmail.com</a>
 					</address>
 
-					<ul>
-					  <li>Tentang KOBATPAM</li>
-					  <li>Pengrajin</li>
+					 <ul><li>SEJARAH</li>
+					  <li>TIPS-TRIK</li>
 			        </ul>
 					<div>
-						<form method="post" action="logout.php"><legend>LOG OUT</legend>
-						<button class="btn btn-danger" type="submit">Log Out</button>
-						</form>
-					</div>
-			  </div>
-   				 <div class="span8">
-				 
-								<div class="navbar">
- <div class="navbar-inner">
-    <ul class="nav">
-  <li>
-    <a href="tamu.php">Home</a>
-	</li>
-  <li><a href="list2.php">List Pengrajin</a></li>
-  <li class="active"><a href="invest.php">Create Investasi</a></li>
-  <li><a href="..php">Notifikasi</a></li>
-</ul>
-  </div>
-</div>
-				 
-      			<pre class="style3 style1">SILAHKAN ISI DETAIL BERIKUT</pre>
-					<font face='Script MT Bold'>
-					<center>
-					<form name="My Form" method="post" action="lihat_post.php">
-					<font face='Gill Sans MT' color='#708090'>
-					Nominal investasi : <BR>
-					<input type="text" placeholder="Masukkan nominal" name="nominal" maxlength="40"><BR>
-					Keterangan investasi : <BR>
-					<input type="text" placeholder="Masukkan nama perusahaan" name="ket" maxlength="40"><BR>
-					Waktu investasi : <BR>
-					<input type="date" name="waktu" value="2012-11-28;">
-					<BR>
-					File :
-					<div>Silahkan upload file yang dibutuhkan: <em>maksimal ukuran 8 Mb </em></div>
-					<input type= "file" name="file_attach" />
-					<input type= "hidden" name="maksimal ukuran" value="8000000" /> <BR>
 					
-					
-					<button class="btn btn-primary" type="submit">Submit</button>
-					<button class="btn" type="reset">Reset</button>
-					<BR><BR>
-					<font face='Times New Roman' color='#BDB76B'>
-					<a href=""> <span class="style3">lihat detail investasi</span>
-					</center>
-					</form>
-			  </div>
-		  </div>
-				</div>
+		<form method="post" action="../code/logout_presnt.php"><legend>LOG OUT</legend>
 
+			<button class="btn btn-danger" type="submit">Log Out</button>
+		</form>
+			</div>
+		</div>
+		
+		<div class="span8">
+		  
+<pre class="style3 style1">INVESTASIKAN DANA ANDA
+					</pre>
+
+
+<table border="1" cellpadding="3" cellspacing="0">
+
+<?php
+$id=$_GET['id'];
+$query=" SELECT * FROM pengrajin WHERE id_dagang = '$id' ";
+
+$result=mysql_query($query);
+$num=mysql_numrows($result);
+mysql_close();
+
+
+$i=0;
+while ($i < $num) {
+$id=mysql_result($result,$i,"id_dagang");
+$nama=mysql_result($result,$i,"nama_usaha");
+$alamat=mysql_result($result,$i,"alamat_usaha");
+$telp=mysql_result($result,$i,"telp_usaha");
+$profil=mysql_result($result,$i,"profil_usaha");
+$gambar=mysql_result($result,$i,"gmbar_usaha");
+++$i;
+}
+ 
+ ?>
+ <form action="../code1/update_produk_presnt.php" method="post" enctype="multipart/form-data">
+  <table>
+<tr>
+<td>Id Dagang :</td>
+<td><?php echo $id; ?></td>
+ </tr>
+ <tr>
+<td>Nama Usaha :</td>
+<td><?php echo $nama; ?></td>
+ </tr>
+<tr>
+ <td>Alamat :</td>
+<td><?php echo $alamat; ?></td>
+</tr>
+<tr>
+<td>Telpon :</td>
+ <td><?php echo $telp; ?></td>
+</tr>
+<tr>
+<td>Profil :</td>
+<td><?php echo $profil; ?></textarea></td>
+</tr>
+ <tr>
+ <td>Gambar :</td>
+ <td><img src="<?php echo $gambar; ?>" width="250" height="150" class="img-rounded" />
+ </td>
+ </tr>
+ <tr>
+   <td>Nominal Investasi :</td>
+  <td><input type="text" name="inv" size="30" value="" ></td>
+   </tr>
+   <tr>
+   <td>Keterangan :</td>
+  <td><textarea name ="ket" placeholder="Masukkan keterangan terkait investasi anda" rows="6" required="required" ></textarea></td>
+   </tr>
+   </table>
+  
+   <p>
+ <BR><BR>
+ <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+   <button class="btn" type="submit">Cancel</button>
+</form>
+   
+
+</body>
+</html>
+
+<br>
+
+
+</pre>
+		</div>
+		
+	  </div>
+	</div>
 
 </body>
 </html>
