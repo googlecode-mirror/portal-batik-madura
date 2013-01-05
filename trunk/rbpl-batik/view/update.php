@@ -71,7 +71,7 @@ include "../code/config.php";
 
 <?php
 
-$query=" SELECT * FROM pengrajin";
+$query=" SELECT * FROM pengrajin WHERE username = '$_SESSION[username]'";
 $result=mysql_query($query);
 $num=mysql_numrows($result);
 mysql_close();
