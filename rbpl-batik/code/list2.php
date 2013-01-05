@@ -1,5 +1,6 @@
 <?php
-include "logincek.php";
+//include "logincek.php";
+include "../code/config.php";
 ?>
 <html>
 <head>
@@ -70,7 +71,6 @@ include "logincek.php";
     <a href="tamu.php">Home</a>
 	</li>
   <li class="active"><a href="">List Pengrajin</a></li>
-  <li><a href="invest.php">Create Investasi</a></li>
   <li><a href="..php">Notifikasi</a></li>
 </ul>
   </div>
@@ -86,22 +86,34 @@ include "logincek.php";
 	
 	//create table
 	mysql_select_db("kobatpam",$conn);
-	$result = mysql_query("SELECT * FROM investasi");
+	$result = mysql_query("SELECT * FROM pengrajin");
 	echo "<table border='1'>
 	<tr>
 	<th BGCOLOR=#f7efde>Id_Dagang</th>
+	<th BGCOLOR=#f7efde>Id_Inv</th>
 	<th BGCOLOR=#f7efde>Nama_Pengrajin</th>
-	<th BGCOLOR=#f7efde>Alamat</th>
-	<th BGCOLOR=#f7efde>Detail</th>
+	<th BGCOLOR=#f7efde>Alamat_Usaha</th>
+	<th BGCOLOR=#f7efde>Telepon</th>
+	<th BGCOLOR=#f7efde>Profil Usaha</th>
+	<th BGCOLOR=#f7efde>Foto</th>
+	<th BGCOLOR=#f7efde></th>
 	</tr>";
 	
 	while ($row = mysql_fetch_array($result))
 	{
 	echo "<tr>";
-	echo "<td>" . $row['NomorTamu'] . "</td> ";
-	echo "<td>" . $row['NamaTamu'] . "</td>";
-	echo "<td>" . $row['NomorHp'] . "</td>";
-	echo "<td>" . $row['KomentarTamu'] . "</td>";
+	echo "<td>" . $row['id_dagang'] . "</td> ";
+	echo "<td>" . $row['id_inv'] . "</td> ";
+	echo "<td>" . $row['nama_usaha'] . "</td>";
+	echo "<td>" . $row['alamat_usaha'] . "</td>";
+	echo "<td>" . $row['telp_usaha'] . "</td>";
+	echo "<td>" . $row['profil_usaha'] . "</td>";
+	echo "<td>"; 
+	echo '<img src="'.$row['gmbar_usaha'].'" width="50"/>';  
+	echo "</td>";
+	echo "<td>";
+	echo '<a href="invest.php?id='.$row['id_dagang'].'"> Invest </a>';
+	echo "</td>";
 	echo "</tr>";
 	}
 	echo "</table>";
@@ -115,11 +127,8 @@ include "logincek.php";
     <li class="active"><a href="#">1</a></li>
   </ul>
 </div>
-
-			  </div>
+			 </div>
 		  </div>
-				</div>
-
-
+		</div>
 </body>
 </html>
