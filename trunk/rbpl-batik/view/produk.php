@@ -10,6 +10,7 @@ include "../code/login_proxy.php";
     <!-- Bootstrap -->
 	<link rel="stylesheet" type="css/text" href="../css/bootstrap.css" />
 	<link rel="stylesheet" type="css/text" href="../css/style.css" />
+	<script type="text/javascript" src="../js/warning.js"></script>
 <style type="text/css">
 <!--
 .style1 {
@@ -115,7 +116,8 @@ include "../code/login_proxy.php";
 	echo "<td>";
 	echo '<a href="update_produk.php?id='.$data['id_produk'].'">Update produk</a>';
 	echo '<br>'; 			
-	echo '<a href="../code/delete_produk.php?id='.$data['id_produk'].'"> Delete produk</a>' ;
+	//echo '<a href="../code/delete_produk.php?id='.$data['id_produk'].'"> Delete produk</a>' ;
+	echo '<a href="../code/delete_produk.php?id='.$data['id_produk'].'" onClick="return warning();" > Delete produk</a>';	
 	echo "</td>";
 	echo "</tr>";
 	
