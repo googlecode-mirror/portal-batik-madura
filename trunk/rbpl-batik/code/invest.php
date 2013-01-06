@@ -83,7 +83,8 @@ mysql_close();
 
 $i=0;
 while ($i < $num) {
-$id=mysql_result($result,$i,"id_dagang");
+//$idd=mysql_result($result,$i,"id_dagang");
+$idd=mysql_result($result,$i,"id_dagang");
 $nama=mysql_result($result,$i,"nama_usaha");
 $alamat=mysql_result($result,$i,"alamat_usaha");
 $telp=mysql_result($result,$i,"telp_usaha");
@@ -93,11 +94,11 @@ $gambar=mysql_result($result,$i,"gmbar_usaha");
 }
  
  ?>
- <form action="../code1/update_produk_presnt.php" method="post" enctype="multipart/form-data">
+ <form action="../code/input_invest.php?idinv=<?php echo $id?>" method="post" enctype="multipart/form-data"> 
   <table>
 <tr>
 <td>Id Dagang :</td>
-<td><?php echo $id; ?></td>
+<td><?php echo $idd; ?></td>
  </tr>
  <tr>
 <td>Nama Usaha :</td>
@@ -125,18 +126,27 @@ $gambar=mysql_result($result,$i,"gmbar_usaha");
   <td><input type="text" name="inv" size="30" value="" ></td>
    </tr>
    <tr>
-   <td>Keterangan :</td>
+   <td>Keterangan:</td>
   <td><textarea name ="ket" placeholder="Masukkan keterangan terkait investasi anda" rows="6" required="required" ></textarea></td>
+   </tr>
+   <tr>
+   <td>Tanggal Investasi</td>
+   <td><input type="date" name="tgl" size="50" value="pilih tanggal" ></td>
+   </tr><br>
+   <tr>
+	<td>File Attachment</td>
+	<p>
+	Upload File yang dibutuhkan: (tidak wajib)<br>
+	<td><input type="file" name="datafile" size="40"></td>	
+	</p>
    </tr>
    </table>
   
    <p>
  <BR><BR>
  <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-   <button class="btn" type="submit">Cancel</button>
+ <button class="btn" type="submit">Cancel</button>
 </form>
-   
-
 </body>
 </html>
 
