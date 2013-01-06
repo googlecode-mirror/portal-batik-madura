@@ -49,10 +49,14 @@
 			<ul><li>SEJARAH</li>
 				<li>TIPS-TRIK</li>
 			</ul>
-			<div>		
-				<form method="post" action="../code/logout_presnt.php"><legend>LOG OUT</legend>
-					<button class="btn btn-danger" type="submit">Log Out</button>
-				</form>
+			<div>
+			<?php
+				if(isset($_SESSION['login'])){
+					?><form method="post" action="../code/logout.php"><legend>LOG OUT</legend>
+						<button class="btn btn-danger" type="submit">Log Out</button>
+					</form><?php
+				}
+			?>
 			</div>
 		</div>
 		
