@@ -66,7 +66,7 @@ if (isset($_POST['invest'])){
 					<div>
 					<?php
 						if(isset($_SESSION['login'])){
-							?><form method="post" action="../code/logout.php"><legend>LOG OUT</legend>
+							?><form method="post" action="../code/logout.php">
 								<button class="btn btn-danger" type="submit">Log Out</button>
 							</form><?php
 						}

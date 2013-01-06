@@ -1,5 +1,6 @@
 <?php
-include "logincek.php";
+include "config.php";
+//include "login_proxy.php";
 
 if (isset($_POST['back'])){
 	header('location: home_pengu.php');}

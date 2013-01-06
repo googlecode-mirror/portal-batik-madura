@@ -58,7 +58,7 @@
 			<h6> klik tombol di bawah untuk melanjutakan</h6>
 		</div>
 		<div align="center">
-			<form method="post" action="home_utama.php">
+			<form method="post" action="Login_pengunjung.php">
 				<button type="submit" class="btn" name="Submit">Lanjutkan</button>
 			</form>
 		</div>
