@@ -4,7 +4,7 @@ include "../code/config.php";
 ?>
 <html>
 <head>
-<title>Input Data Barang ke Dabase</title>
+<title>List Pengrajin</title>
 <meta name="generator"
     content="HTML Tidy for Windows (vers 14 February 2006), see www.w3.org" />
     <!-- Bootstrap -->
@@ -71,12 +71,11 @@ include "../code/config.php";
     <a href="tamu.php">Home</a>
 	</li>
   <li class="active"><a href="">List Pengrajin</a></li>
-  <li><a href="..php">Notifikasi</a></li>
 </ul>
   </div>
 </div>		 
 							
-      			<pre class="style3 style1">LIST
+      			<pre class="style3 style1">LIST PENGRAJIN KOBATPAM
 				
 	<center>
 	<?php
@@ -112,7 +111,7 @@ include "../code/config.php";
 	echo '<img src="'.$row['gmbar_usaha'].'" width="50"/>';  
 	echo "</td>";
 	echo "<td>";
-	echo '<a href="invest.php?id='.$row['id_dagang'].'"> Invest </a>';
+     echo '<a href="../view/invest.php?id='.$row['id_dagang'].'"> Invest </a>';
 	echo "</td>";
 	echo "</tr>";
 	}
