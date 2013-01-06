@@ -79,11 +79,11 @@
 <BR>
 <img src="../img/logo.jpg" width="250" height="150" class="img-rounded">  
 <br>
-<p class="style3"> <strong>KOBATPAM</strong> (Komunitas Batik Pamekasan merupakan bentuk sistem informasi yang diciptakan / dikembangkan untuk membantu pengrajin batik dikawasan Pamekasan – Madura. 
+<p class="style3"> <strong>KOBATPAM</strong> (Komunitas Batik Pamekasan merupakan bentuk sistem informasi yang diciptakan / dikembangkan untuk membantu pengrajin batik dikawasan Pamekasan Â– Madura. 
 
-Dengan bantuan dari <em>Komunitas Pencinta Batik Pamekasan</em> website ini diharapkan akan menajadi sarana penawaran produk batik dari para pengrajin batik di Pamekasan – Madura, membantu mempermudah masyarakat luar untuk melakukan pembelian terhadap produk batik Pamekasan, dan memberikan sarana bagi pengrajin batik dalam mendapatkan investasi dari para pengunjung website. 
+Dengan bantuan dari <em>Komunitas Pencinta Batik Pamekasan</em> website ini diharapkan akan menajadi sarana penawaran produk batik dari para pengrajin batik di Pamekasan Â– Madura, membantu mempermudah masyarakat luar untuk melakukan pembelian terhadap produk batik Pamekasan, dan memberikan sarana bagi pengrajin batik dalam mendapatkan investasi dari para pengunjung website. 
 
-Sehingga nantinya akan menambah produktifitas Pengrajin Batik Pamekasan – Madura.</p>
+Sehingga nantinya akan menambah produktifitas Pengrajin Batik Pamekasan Â– Madura.</p>
 
 </pre>
 
