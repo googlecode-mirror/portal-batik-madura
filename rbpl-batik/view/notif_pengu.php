@@ -5,21 +5,6 @@ if(!isset($_SESSION['login'])){
 	echo "<script>window.location='../view/Login_pengunjung.php'</script>";
 }
 
-$sql = mysql_query("SELECT * FROM `pengguna` WHERE `Id_login_peng`='".$_SESSION['login']."'");
-while ($data = mysql_fetch_array($sql))
-{
- 	$user_nama = $data['nama_user'];
- 	$telepon = $data['no_telp']; 
- 	$alamat = $data['alamat'];
- 	$email = $data['email'];
- 	$jk_temp = $data['jk'];
- 	if ($jk_temp == "L"){
- 		$jk = "Laki-Laki";
- 	}else{
-		$jk = "Perempuan";
-	}
-}
-
 if (isset($_POST['penju'])){
 	header('location: home_utama_login.php');}
 if (isset($_POST['invest'])){
@@ -81,7 +66,7 @@ if (isset($_POST['invest'])){
 					<div>
 					<?php
 						if(isset($_SESSION['login'])){
-							?><form method="post" action="../code/logout.php">
+							?><form method="post" action="../code/logout.php"><legend>LOG OUT</legend>
 								<button class="btn btn-danger" type="submit">Log Out</button>
 							</form><?php
 						}
@@ -90,62 +75,45 @@ if (isset($_POST['invest'])){
 		</div>
 	
 		<div class="span8" style="background-color:#f5f5f5" style="border-style:double">
-<div class="navbar">
- <div class="navbar-inner">
-    <ul class="nav">
-  <li class="active"><a href="..">Profil</a></li>
-  <li><a href="notif_pengu.php">Notifikasi</a></li>
-</ul>
-  </div>
-  </div>
-			<h2> Selamat Datang <?php echo $user_nama; ?></h2>
+		<div class="navbar">
+ 			<div class="navbar-inner">
+    			<ul class="nav">
+  					<li><a href="home_pengu.php">Profil</a></li>
+  					<li class="active"><a href="..">Notifikasi</a></li>
+				</ul>
+  			</div>
+  		</div>
+		<pre class="style3 style1">
 			<div align="left">
-				<table>
+				<table class="table table-striped">
 					<tr>
-						<td> Nama</td>
-						<td> : <?php echo $user_nama ?> </td>
+						<td> No </td>
+						<td> Tanggal </td>
+						<td> Notifikasi </td>
 					</tr>
-					<tr>
-						<td> Alamat</td>
-						<td> : <?php echo $alamat ?> </td>
-					</tr>
-					<tr>
-						<td> Jenis Kelamin</td>
-						<td> : <?php echo $jk ?> </td>
-					</tr>
-					<tr>
-						<td> No. Telepon</td>
-						<td> : <?php echo $telepon ?> </td>
-					</tr>
-					<tr>
-						<td> Email</td>
-						<td> : <?php echo $email ?> </td>
-					</tr>
+					<?php
+
+					$no=1;
+					$id_user = mysql_result(mysql_query("SELECT `id_user` FROM `pengguna` WHERE `Id_login_peng`='".$_SESSION['login']."'"),0);
+					$sql = mysql_query("SELECT * FROM `notif_peng`  WHERE `id_user` = '".$id_user."'" );
+					//$sql = mysql_query("SELECT * FROM notif_peng, pengguna WHERE pengguna.Id_login_peng = '$_SESSION['login']' AND pengguna.id_user = notif_peng.id_user") ;
+					
+					while ($data = mysql_fetch_array($sql)){ 
+
+						?><tr>
+							<td> <?php echo $no; ?> </td>
+							<td> <?php echo $data['tgl_2']; ?> </td>
+							<td> <?php echo $data['isi_notif_2']; ?> </td>
+
+							
+						</tr>
+					<?php
+					$no+1; 
+					}
+					?>
 				</table>
-			</br>
-			<p>* Untuk Melanjutkan silahkan pilih salah satu menu dengan menekan tombol di bawah ini</p>
 			</div>
-			<div class="form-actions">
-			<form action="home_pengu.php" method="post">
-  				<button name="penju" type="submit" class="btn btn-success">Penjualan</button>
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-				&nbsp;
-  				<button name="invest" type="submit" class="btn btn-success">Investasi</button>
-			</form>
-			</div>
+		</pre>
 		</div>	
 	</div>
 </div>

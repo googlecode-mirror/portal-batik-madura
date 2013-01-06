@@ -1,6 +1,11 @@
 <?php
 //include "../code/login_proxy.php";
 include "../code/config.php";
+
+if (isset($_POST['back'])){
+	header('location: home_pengu.php');}
+if (isset($_POST['log'])){
+	header('location: ../code/logout.php');}
 ?>
 <html>
 <head>
@@ -57,10 +62,10 @@ include "../code/config.php";
 			        </ul>
 					<div>
 					
-		<form method="post" action="../code/logout_presnt.php"><legend>LOG OUT</legend>
-
-			<button class="btn btn-danger" type="submit">Log Out</button>
-		</form>
+				<form method="post" action="invest.php">
+					<button name="back" class="btn btn-primary" type="submit">Back</button>
+					<button name="log" class="btn btn-danger" type="submit">Log Out</button>
+				</form>
 			</div>
 		</div>
 		

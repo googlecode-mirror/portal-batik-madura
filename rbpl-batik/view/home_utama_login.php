@@ -4,10 +4,10 @@ if(!isset($_SESSION['login'])){
 	echo "<script>window.location='../view/Login_pengunjung.php'</script>";
 }
 
-if (isset($_POST['login'])){
-	header('location: Login_pengunjung.php');}
-if (isset($_POST['daftar'])){
-	header('location: Daftar_pengunjung.php');}
+if (isset($_POST['back'])){
+	header('location: home_pengu.php');}
+if (isset($_POST['log'])){
+	header('location: ../code/logout.php');}
 ?>
 <html>
 <head>
@@ -61,8 +61,9 @@ if (isset($_POST['daftar'])){
 				<li>TIPS-TRIK</li>
 			</ul>
 			<div>
-				<form method="post" action="../code/logout.php"><legend>LOG OUT</legend>
-					<button class="btn btn-danger" type="submit">Log Out</button>
+				<form method="post" action="home_utama_login.php">
+					<button name="back" class="btn btn-primary" type="submit">Back</button>
+					<button name="log" class="btn btn-danger" type="submit">Log Out</button>
 				</form>
 			</div>
 		</div>
