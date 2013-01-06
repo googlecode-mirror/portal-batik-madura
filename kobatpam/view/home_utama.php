@@ -1,8 +1,8 @@
 <?php
 if (isset($_POST['login'])){
-	header('location: /view/Login_pengunjung.php');}
+	header('location: ../view/Login_pengunjung.php');}
 if (isset($_POST['daftar'])){
-	header('location: /view/Daftar_pengunjung.php');}
+	header('location: ../view/Daftar_pengunjung.php');}
 ?>
 <html>
 <head>
@@ -69,7 +69,7 @@ if (isset($_POST['daftar'])){
 		<div class="span8">
 		  	<div class="navbar" align="right">
 			<p>
-				<form method="post" action="home.php">
+				<form method="post" action="home_utama.php">
 			  		<button name="login" class="btn btn-success" type="submit">Login</button>
 			  		<button name="daftar" class="btn btn-success" type="submit">Daftar</button>
 			  	</form>
