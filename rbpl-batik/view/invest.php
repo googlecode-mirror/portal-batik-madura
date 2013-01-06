@@ -66,7 +66,7 @@ include "../code/config.php";
 		
 		<div class="span8">
 		  
-<pre class="style3 style1">INVESTASIKAN DANA ANDA
+<pre class="style3 style1">INVESTASIKAN DANA ANDA KEPADA PENGRAJIN
 					</pre>
 
 
