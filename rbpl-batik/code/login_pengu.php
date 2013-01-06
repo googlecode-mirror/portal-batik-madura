@@ -9,11 +9,11 @@ $hasil = mysql_num_rows($sql);
 
 if ($hasil > 0 ){
 	session_start();
-	$_SESSION['login'];
-	header('location=../view/home_pengu.php');
+	$_SESSION['login'] = $login;
+	header('location: ../view/home_pengu.php');
 }else{
 	echo "<script>alert('Login gagal, silahkan coba lagi ..');window.history.go(-1)</script>";
-	header('location=../view/login_pengu.php');
+	header('location: ../view/login_pengu.php');
 }
 
 /*echo "<script>alert('Selamat anda sudah berhasil terdaftar, Selamat Datang di KOBATPAM ;) ');window.history.go(1)</script>";*/

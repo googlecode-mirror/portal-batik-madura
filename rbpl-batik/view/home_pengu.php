@@ -1,9 +1,29 @@
 <?php
-include "../code/proxy.php";
+include "../code/config.php";
+session_start();
+if(!isset($_SESSION['login'])){
+	echo "<script>window.location='../view/Login_pengunjung.php'</script>";
+}
 
-$query = mysql_query("SELECT * FROM pengguna WHERE Id_login_peng='$_SESSION[login]'");
-$hasil = mysql_fetch_array($query);
-$nama = $hasil['nama_user'];
+$sql = mysql_query("SELECT * FROM `pengguna` WHERE `Id_login_peng`='".$_SESSION['login']."'");
+while ($data = mysql_fetch_array($sql))
+{
+ 	$user_nama = $data['nama_user'];
+ 	$telepon = $data['no_telp']; 
+ 	$alamat = $data['alamat'];
+ 	$email = $data['email'];
+ 	$jk_temp = $data['jk'];
+ 	if ($jk_temp == "L"){
+ 		$jk = "Laki-Laki";
+ 	}else{
+		$jk = "Perempuan";
+	}
+}
+
+if (isset($_POST['penju'])){
+	header('location: home_utama.php');}
+if (isset($_POST['inves'])){
+	header('location: list2.php');}
 ?>
 <html>
 <head>
@@ -58,10 +78,65 @@ $nama = $hasil['nama_user'];
 					 <ul><li>SEJARAH</li>
 					  <li>TIPS-TRIK</li>
 			        </ul>
+					<div>
+					<?php
+						if(isset($_SESSION['login'])){
+							?><form method="post" action="../code/logout.php"><legend>LOG OUT</legend>
+								<button class="btn btn-danger" type="submit">Log Out</button>
+							</form><?php
+						}
+					?>
+					</div>
 		</div>
 		<div class="span8" style="background-color:#f5f5f5" style="border-style:double">
-			<h2> Selamat Datang <?php echo "$nama"; ?></h2>
-			
+			<h2> Selamat Datang <?php echo $user_nama; ?></h2>
+			<div align="left">
+				<table>
+					<tr>
+						<td>Nama</td>
+						<td> : <?php echo $user_nama ?> </td>
+					</tr>
+					<tr>
+						<td>Alamat</td>
+						<td> : <?php echo $alamat ?> </td>
+					</tr>
+					<tr>
+						<td>Jenis Kelamin</td>
+						<td> : <?php echo $jk ?> </td>
+					</tr>
+					<tr>
+						<td>No. Telepon</td>
+						<td> : <?php echo $telepon ?> </td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td> : <?php echo $email ?> </td>
+					</tr>
+				</table>
+			</br>
+			<p>* Untuk Melanjutkan silahkan pilih salah satu menu dengan menekan tombol di bawah ini</p>
+			</div>
+			<div class="form-actions">
+			<form action="home_pengu.php" method="post">
+  				<button name="penju" type="submit" class="btn btn-success">Penjualan</button>
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				&nbsp;
+  				<button name="inves" type="button" class="btn btn-success">Investasi</button>
+			</form>
+			</div>
 		</div>	
 	</div>
 </div>
