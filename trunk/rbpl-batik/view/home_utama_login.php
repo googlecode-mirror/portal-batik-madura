@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['login'])){
+	echo "<script>window.location='../view/Login_pengunjung.php'</script>";
+}
+
 if (isset($_POST['login'])){
 	header('location: Login_pengunjung.php');}
 if (isset($_POST['daftar'])){
@@ -56,25 +61,13 @@ if (isset($_POST['daftar'])){
 				<li>TIPS-TRIK</li>
 			</ul>
 			<div>
-			<?php
-				if(isset($_SESSION['login'])){
-					?><form method="post" action="../code/logout.php"><legend>LOG OUT</legend>
-						<button class="btn btn-danger" type="submit">Log Out</button>
-					</form><?php
-				}
-			?>
+				<form method="post" action="../code/logout.php"><legend>LOG OUT</legend>
+					<button class="btn btn-danger" type="submit">Log Out</button>
+				</form>
 			</div>
 		</div>
 		
 		<div class="span8">
-		  	<div class="navbar" align="right">
-			<p>
-				<form method="post" action="home_utama.php">
-			  		<button name="login" class="btn btn-success" type="submit">Login</button>
-			  		<button name="daftar" class="btn btn-success" type="submit">Daftar</button>
-			  	</form>
-			</p>
-			</div>
 			<pre class="style3 style1">
 				<table align="center">
 				<tr>
