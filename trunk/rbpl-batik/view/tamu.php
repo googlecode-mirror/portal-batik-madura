@@ -46,7 +46,7 @@ if (isset($_POST['log'])){
 		<div class="container-fluid">
   			<div class="row-fluid">
     			<div class="span2 offset1">
-					<p><img src="../img/1.jpg" width="250" height="150"	 		class="img-rounded"></p>
+					<p><img src="../img/logo_kobatpam.jpg" width="250" height="150"	 		class="img-rounded"></p>
 					<address>
 					  <strong>Komunitas Batik Pamekasan</strong><br>
 					  Jl.   niansa&nbsp;<em>soke</em>pamekasan <br>
@@ -80,8 +80,6 @@ if (isset($_POST['log'])){
     <a>Home</a>
 	</li>
   <li><a href="list2.php">List Pengrajin</a></li>
-  <li><a href="invest.php">Create Investasi</a></li>
-  <li><a href="..php">Notifikasi</a></li>
 </ul>
   </div>
 </div>
