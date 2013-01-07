@@ -96,7 +96,6 @@ if (isset($_POST['invest'])){
 					$no=1;
 					$id_user = mysql_result(mysql_query("SELECT `id_user` FROM `pengguna` WHERE `Id_login_peng`='".$_SESSION['login']."'"),0);
 					$sql = mysql_query("SELECT * FROM `notif_peng`  WHERE `id_user` = '".$id_user."'" );
-					//$sql = mysql_query("SELECT * FROM notif_peng, pengguna WHERE pengguna.Id_login_peng = '$_SESSION['login']' AND pengguna.id_user = notif_peng.id_user") ;
 					
 					while ($data = mysql_fetch_array($sql)){ 
 

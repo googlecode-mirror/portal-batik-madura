@@ -70,59 +70,37 @@ include "../code/login_proxy.php";
 				<ul class="nav">
 			  		<li ><a href="home_pengrajin_profil.php">Profil</a>
 					</li>
-				   <li class="active"><a href="produk.php">Produk</a></li>
-				  <li><a href="notifikasi.php">Notifikasi</a></li>
+				   <li><a href="produk.php">Produk</a></li>
+				  <li class="active"><a href="notifikasi.php">Notifikasi</a></li>
 				</ul>
 			  </div>
 			</div>		  
-<pre class="style3 style1"><span class="style4"><strong>DAFTAR PRODUK BATIK</strong>  																		 				<a href="add_produk.php"><button class="btn btn-success" type="submit" >Add Produk</button></span></a>
-<center>
-	<?php
-	$sql = mysql_query("SELECT * FROM produk, pengrajin WHERE pengrajin.username = '$_SESSION[username]' AND pengrajin.id_dagang = produk.id_dagang") ;
+		<pre class="style3 style1"><span class="style4">
+		<strong>Notifikasi</strong>
+		<table class="table table-striped">
+			<tr>
+				<td> No </td>
+				<td> Tanggal </td>
+				<td> Notifikasi </td>
+			</tr>
+		<?php
+		$no=1;
+		$id_dagang = mysql_result(mysql_query("SELECT id_dagang FROM pengrajin WHERE username = '".$_SESSION['username']."'"),0);
+		$sql = mysql_query("SELECT * FROM `notif_ud`  WHERE `id_dagang` = '".$id_dagang."'" );
 
-	echo "<table border='1' bordercolor = 'white' >
-	<tr>
-	<th BGCOLOR=#00CC99>ID PRODUK</th>	
-	<th BGCOLOR=#00CC99>NAMA PRODUK</th>
-	<th BGCOLOR=#00CC99>HARGA PRODUK</th>
-	<th BGCOLOR=#00CC99>STOK</th>
-	<th BGCOLOR=#00CC99>DETAIL PRODUK</th>
-	<th BGCOLOR=#00CC99>GAMBAR</th>
-	<th BGCOLOR=#00CC99>KONFIGURASI</th>
-	
-	</tr>";
-	
-	while ($data = mysql_fetch_array($sql))
-	{
-	$id = $data['id_produk'] ;
-	 $nama = $data['nama_produk'] ;
-	 $harga = $data['harga_produk'];
-	  $stok = $data['stok_produk'];
-  	  $detail = $data['detail_produk'];
-	  $loc = $data['Gambar'];
-	  
-//	if($_POST['Submit']){  
-	  
-	echo "<tr>";
-	echo "<td>" . $id . "</td>";
-	echo "<td>" . $nama . "</td>";
-	echo "<td>" . $harga . "</td>";
-	echo "<td>" . $stok . "</td>";
-	echo "<td>" . $detail . "</td>";
-	echo "<td>";
-	echo '<img src="'.$loc.'" width="100" />';
-	echo "</td>";
-	echo "<td>";
-	echo '<a href="update_produk.php?id='.$data['id_produk'].'">Update produk</a>';
-	echo '<br>'; 			
-	//echo '<a href="../code/delete_produk.php?id='.$data['id_produk'].'"> Delete produk</a>' ;
-	echo '<a href="../code/delete_produk.php?id='.$data['id_produk'].'" onClick="return warning();" > Delete produk</a>';	
-	echo "</td>";
-	echo "</tr>";
-	
-	}
-	?>
-	</center>
+		while ($data = mysql_fetch_array($sql)){ 
+
+		?><tr>
+			<td> <?php echo $no; ?> </td>
+			<td> <?php echo $data['tgl_1']; ?> </td>
+			<td> <?php echo $data['isi_notif_1']; ?> </td>			
+		</tr>
+		<?php
+		$no+1; 
+		}
+		?>											 				
+		</span>
+
 		</div>
 		
 	  </div>
