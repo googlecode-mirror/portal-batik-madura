@@ -3,7 +3,7 @@
 include "../code/config.php";
 
 if (isset($_POST['back'])){
-	header('location: home_pengu.php');}
+	header('location: list2.php');}
 if (isset($_POST['log'])){
 	header('location: ../code/logout.php');}
 ?>
@@ -137,13 +137,6 @@ $gambar=mysql_result($result,$i,"gmbar_usaha");
    <tr>
    <td>Tanggal Investasi</td>
    <td><input type="date" name="tgl" size="50" value="pilih tanggal" ></td>
-   </tr><br>
-   <tr>
-	<td>File Attachment</td>
-	<p>
-	Upload File yang dibutuhkan: (tidak wajib)<br>
-	<td><input type="file" name="datafile" size="40"></td>	
-	</p>
    </tr>
    </table>
   

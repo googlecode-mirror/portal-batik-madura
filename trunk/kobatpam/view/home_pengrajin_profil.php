@@ -74,7 +74,6 @@ include "../code/config.php";
 					</li>
 				   <li><a href="produk.php">Produk</a></li>
 				  <li><a href="notifikasi.php">Notifikasi</a></li>
-				  <li><a href="_.php">Laporan</a></li>
 				</ul>
 			  </div>
 			</div>		   

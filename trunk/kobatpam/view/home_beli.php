@@ -8,6 +8,7 @@ if(!isset($_SESSION['login'])){
 $sql1 = mysql_query("SELECT * FROM `pengguna` WHERE `Id_login_peng`='".$_SESSION['login']."'");
 
 $id = $_GET['id'];
+$_SESSION['id'] = $id;
 $sql = mysql_query("SELECT * FROM produk WHERE id_produk='".$id."'");
 while($fet = mysql_fetch_array($sql)){
 	$nama = $fet['nama_produk'];
@@ -16,6 +17,14 @@ while($fet = mysql_fetch_array($sql)){
 	$detail = $fet['detail_produk'];
 	$gambar = $fet['Gambar'];
 }
+
+$id_dagang = mysql_result(mysql_query("SELECT `id_dagang` FROM `produk` WHERE `id_produk`='".$id."'"),0);
+$_SESSION['idd'] = $id_dagang;
+
+if (isset($_POST['kem'])){
+	header('location: home_utama_login.php');}
+if (isset($_POST['log'])){
+	header('location: ../code/logout.php');}
 ?>
 <html>
 <head>
@@ -71,9 +80,10 @@ while($fet = mysql_fetch_array($sql)){
 					  <li>TIPS-TRIK</li>
 			        </ul>
 					<div>
-					<form method="post" action="../code/logout.php"><legend>LOG OUT</legend>
-								<button class="btn btn-danger" type="submit">Log Out</button>
-							</form>
+					<form method="post" action="home_beli.php">
+						<button name="kem" class="btn btn-primary" type="submit">Back</button>
+						<button name="log" class="btn btn-danger" type="submit">Log Out</button>
+					</form>
 					</div>
 		</div>
 		<div class="span8" style="background-color:#f5f5f5" style="border-style:double">
@@ -83,7 +93,7 @@ while($fet = mysql_fetch_array($sql)){
 				</tr>
 				<tr>
 					<td align="center">
-						<?php echo '<img src="'.$gambar.'" width="300"/>' ?>
+						<?php echo '<img src="'.$gambar.'" width="250"/>' ?>
 						</br>
 						<h3><?php echo "Rp ".$harga; ?></h3>
 					</td>
@@ -102,7 +112,9 @@ while($fet = mysql_fetch_array($sql)){
 				</tr>
 			</table>
 			<div align="right">
-			<form>
+			<form action="../code/beli.php" method="post">
+				<input type="date" name="tgl" plcaholder="kliktanggal">
+				<input type="text" name="jml" placeholder="jumlah">
 				<button class="btn btn-primary" type="submit">Beli</button>
 			</form>
 			</div>
