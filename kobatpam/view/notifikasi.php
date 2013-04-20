@@ -96,7 +96,7 @@ include "../code/login_proxy.php";
 			<td> <?php echo $data['isi_notif_1']; ?> </td>			
 		</tr>
 		<?php
-		$no+1; 
+		$no = $no+1; 
 		}
 		?>											 				
 		</span>
