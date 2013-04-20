@@ -51,6 +51,9 @@
 					 <ul><li>SEJARAH</li>
 					  <li>TIPS-TRIK</li>
 			        </ul>
+        <form method="post" action="../view/Daftar_pengunjung.php">
+						<button class="btn btn-success" type="submit">Daftar</button>
+					</form>
 		</div>
 		<div class="span8" style="background-color:#f5f5f5" style="border-style:double">
 		<p>&nbsp;</p>
