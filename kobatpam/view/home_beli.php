@@ -113,8 +113,7 @@ if (isset($_POST['log'])){
 			</table>
 			<div align="right">
 			<form action="../code/beli.php" method="post">
-				<input type="date" name="tgl" plcaholder="kliktanggal">
-				<input type="text" name="jml" placeholder="jumlah">
+			  <input type="text" name="jml" placeholder="jumlah">
 				<button class="btn btn-primary" type="submit">Beli</button>
 			</form>
 			</div>
