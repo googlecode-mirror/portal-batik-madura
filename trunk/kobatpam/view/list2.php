@@ -44,7 +44,7 @@ if (isset($_POST['log'])){
 	<div class="container-fluid">
   			<div class="row-fluid">
     			<div class="span2 offset1">
-					<p><img src="../img/1.jpg" width="250" height="150"	 		class="img-rounded"></p>
+					<p><img src="../img/logo_kobatpam.JPG" width="250" height="150"	 		class="img-rounded"></p>
 					<address>
 					  <strong>Komunitas Batik Pamekasan</strong><br>
 					  Jl.   niansa&nbsp;<em>soke</em>pamekasan <br>
@@ -94,8 +94,6 @@ if (isset($_POST['log'])){
 	$result = mysql_query("SELECT * FROM pengrajin");
 	echo "<table border='1'>
 	<tr>
-	<th BGCOLOR=#f7efde>Id_Dagang</th>
-	<th BGCOLOR=#f7efde>Id_Inv</th>
 	<th BGCOLOR=#f7efde>Nama_Pengrajin</th>
 	<th BGCOLOR=#f7efde>Alamat_Usaha</th>
 	<th BGCOLOR=#f7efde>Telepon</th>
@@ -107,8 +105,8 @@ if (isset($_POST['log'])){
 	while ($row = mysql_fetch_array($result))
 	{
 	echo "<tr>";
-	echo "<td>" . $row['id_dagang'] . "</td> ";
-	echo "<td>" . $row['id_inv'] . "</td> ";
+	//echo "<td>" . $row['id_dagang'] . "</td> ";
+	//echo "<td>" . $row['id_inv'] . "</td> ";
 	echo "<td>" . $row['nama_usaha'] . "</td>";
 	echo "<td>" . $row['alamat_usaha'] . "</td>";
 	echo "<td>" . $row['telp_usaha'] . "</td>";
