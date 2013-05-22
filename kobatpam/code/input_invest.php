@@ -10,7 +10,7 @@ $num=mysql_numrows($result);
 
 $u_nominal=$_POST['inv'];
 $u_ket=$_POST['ket'];
-$u_tgl=$_POST['tgl'];
+$u_tgl=date('Y-m-d');//$_POST['tgl'];
 
 $i=0;
 while ($i < $num) {
@@ -55,10 +55,10 @@ $notid_ud = "Perusahaan anda telah mendapatkan invesatasi sebesar RP".$u_nominal
 //mengisi investasi
 mysql_query("INSERT INTO `investasi`(`id_inv`, `id_dagang`, `nama_ud`, `jumlah_keb`, `keterangan_inv`, `waktu_inv`, `profil_inv`, `status_inv`) VALUES ('".$inv."','".$idd."','".$nama."','".$u_nominal."','".$u_ket."','".$u_tgl."','".$profil."','0')");
 //mengisi notif pengguna
-mysql_query("INSERT INTO `notif_peng`(`id_notif_2`, `id_user`, `isi_notif_2`, `tgl_2`, `status_2`) VALUES ('".$inv1."',.".$id_user."','".$notif_peng."','".$u_tgl."','0')");	
+mysql_query("INSERT INTO `notif_peng`(`id_notif_2`, `id_user`, `isi_notif_2`, `tgl_2`, `status_2`) VALUES ('".$inv1."','".$id_user."','".$notif_peng."','".$u_tgl."','0')");	
 //mengisi notif ud
 mysql_query("INSERT INTO `notif_ud`(`id_notif_1`, `id_dagang`, `isi_notif_1`, `tgl_1`, `status_1`) VALUES ('".$inv2."','".$idd."','".$notid_ud."','".$u_tgl."','0')");
-echo "<script>alert('Investasi berhasil di kirim ');window.history.go(1)</script>";
+/*echo "<script>alert('Investasi berhasil di kirim ');window.history.go(1)</script>";*/
 header('Location: ../view/list2.php');
 mysql_close();
  ?>

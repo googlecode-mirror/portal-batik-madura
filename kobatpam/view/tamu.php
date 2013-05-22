@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "../code/config.php";
 //include "login_proxy.php";
 
 if (isset($_POST['back'])){

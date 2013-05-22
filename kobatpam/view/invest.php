@@ -132,7 +132,7 @@ $gambar=mysql_result($result,$i,"gmbar_usaha");
    </tr>
    <tr>
    <td>Keterangan:</td>
-  <td><textarea name ="ket" placeholder="Masukkan keterangan terkait investasi anda" rows="6" required="required" ></textarea></td>
+  <td><textarea name ="ket" placeholder="Masukkan keterangan terkait investasi anda" rows="6" required ></textarea></td>
    </tr>
    <tr>
    <td>Tanggal Investasi</td>
