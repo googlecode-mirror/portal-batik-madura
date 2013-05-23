@@ -89,9 +89,8 @@ include "../code/login_proxy.php";
 		$id_dagang = mysql_result(mysql_query("SELECT id_dagang FROM pengrajin WHERE username = '".$_SESSION['username']."'"),0);
 		$sql = mysql_query("SELECT * FROM `notif_ud`  WHERE `id_dagang` = '".$id_dagang."'" );
 		
-
+		$no = 1;
 		while ($data = mysql_fetch_array($sql)){ 
-		$no = $data['id_notif_1'];
 
 	echo "<tr>";
 	echo "<td>" . $no . "</td>";
@@ -102,7 +101,8 @@ include "../code/login_proxy.php";
 	echo '<br>'; 			
 	echo '<a href="../code/delete_notif.php?id='.$data['id_notif_1'].'" onClick="return warning();" > Delete</a>';	
 	echo "</td>";
-	echo "</tr>"; }
+	echo "</tr>";
+	$no++; }
 	
 			?>
 	

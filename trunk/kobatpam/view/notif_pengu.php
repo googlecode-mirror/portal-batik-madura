@@ -107,7 +107,7 @@ if (isset($_POST['invest'])){
 							
 						</tr>
 					<?php
-					$no+1; 
+					$no++; 
 					}
 					?>
 				</table>
