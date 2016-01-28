@@ -1,0 +1,1 @@
+Projek ini merupakan salah satu tugas mata kuliah Jurusan sistem informasi ITS, RBPL. Projek ini merupakan sebuah website untuk portal pengarajin batik madura, dimana dalam portal ini bisa dilakukan jual beli batik dan juga investasi bagi para investor batik.
